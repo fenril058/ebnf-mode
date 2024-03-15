@@ -54,6 +54,16 @@
   :type 'integer
   :group 'ebnf)
 
+(defcustom ebnf-mode-comment-starter ";"
+  "Comment starter."
+  :type 'string
+  :group 'ebnf)
+
+(defcustom ebnf-mode-comment-ender ""
+  "Comment ender"
+  :type 'string
+  :group 'ebnf)
+
 (defcustom ebnf-mode-comment-char ?\;
   "Line comment character."
   :type 'character
@@ -148,8 +158,8 @@ Indent production continuation lines to `ebnf-mode-indent-offset'."
 
 \\{ebnf-mode-map}"
   (setf font-lock-defaults '(ebnf-mode-font-lock-keywords nil nil nil nil))
-  (setq-local comment-start ";")
-  (setq-local comment-end "")
+  (setq-local comment-start ebnf-mode-comment-starter)
+  (setq-local comment-end ebnf-mode-comment-ender)
   (setq-local indent-line-function #'ebnf-mode-indent-line))
 
 ;;;###autoload
